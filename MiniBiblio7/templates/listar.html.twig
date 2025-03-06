@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Listado de Libros</h1>
+
+    <a href="{{ path('libroNuevo') }}">Registrar nuevo libro</a>
+
+    <table>
+        <tr>
+            <th>Titulo</th>
+            <th>Año de publicacion</th>
+            <th>Paginas</th>
+            <th>Editorial</th>
+            <th>Autor/es</th>
+        </tr>
+
+        {% for libro in libros %}
+            <tr>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.anioPublicacion}}</td>
+                <td>{{ libro.paginas }}</td>
+                <td>{{ libro.editorial.nombre }}</td>
+                <td>
+                    {% for autor in libro.autores %}
+                        {{ autor.nombre }} {{ autor.apellidos}} <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('modificarLibro', {'id' : libro.id}) }}"><i class="bi bi-pencil"></i></a>
+                </td>
+                <td>
+                    <a href="{{ path('eliminarLibro', {'id' : libro.id}) }}"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

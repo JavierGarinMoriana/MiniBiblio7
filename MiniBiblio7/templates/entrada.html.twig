@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Bienvenido! {% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        Bienvenido, "{{ app.user.email }}"
+        <a href="{{ path('app_logout') }}">Cerrar sesión</a>
+
+        <h1>YA PUEDES ACCEDER A LA PAGINA</h1>
+    {% else %}
+        <h1>BIENVENIDO INICIE SESION</h1>
+
+        <a href="{{ path('app_login') }}">Iniciar sesión</a>
+    {% endif %}
+
+{% endblock %}

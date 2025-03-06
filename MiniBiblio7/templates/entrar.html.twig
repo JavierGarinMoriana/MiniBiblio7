@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Login! {% endblock %}
+
+{% block body %}
+
+    <form method="post">
+
+        {% if error %}
+            <h2 style="color: red">{{ error.message }}</h2>
+        {% endif %}
+
+
+        <h1>Acceso a la aplicacion </h1>
+
+        <label for="usuario">Usuario:
+            <input type="text" name="_username" id="usuario" value="{{ last_username }}" placeholder="Correo Electronico" required {% if not error %}autofocus{% endif %}/>
+        </label>
+        <label for="password">Contraseña:
+            <input type="password" name="_password" id="password" placeholder="Contraseña" required {% if error %} autofocus {% endif %}/>
+        </label>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+
+{% endblock %}

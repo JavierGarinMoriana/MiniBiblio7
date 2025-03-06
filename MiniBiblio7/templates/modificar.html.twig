@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig'%}
+{% block body %}
+
+    {% block content %}
+        {% if libro.id is null %}
+            <h1>Datos del nuevo vehiculo</h1>
+        {% else %}
+            <h1>Modificar datos del vehiculo</h1>
+        {% endif %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary">Guardar Datos.</button>
+        {{ form_end(form) }}
+    {% endblock%}
+    <br><br>
+    <a href="{{ path('listar') }}" class="btn btn-secondary">Volver al listado</a>
+{% endblock %}
+
+
